@@ -64,6 +64,15 @@ class User extends CI_Controller
 		$this->load->view('user/notrobot');
 	}
 
+	public function jabatan()
+	{
+		$this->load->view('index');
+	}
+	public function clear_jabatan()
+	{
+		$this->load->view('user/jabatan');
+	}
+
 	public function jemaat_edit()
 	{
 		$last_id = 0;
@@ -90,5 +99,46 @@ class User extends CI_Controller
 		$this->load->view('index');
 	}
 
+	public function pengurus_edit()
+	{
+		$this->load->view('index');
+	}
+
+	public function clear_pengurus_list()
+	{
+		$this->load->view('user/pengurus_list');
+	}
+	public function pengurus_list()
+	{
+		$this->load->view('index');
+	}
+
+	public function admin_edit()
+	{
+		$this->load->view('index');
+	}
+
+	public function clear_admin_list()
+	{
+		$this->load->view('user/admin_list');
+	}
+	public function admin_list()
+	{
+		$this->load->view('index');
+	}
+
+	public function operator_edit()
+	{
+		$this->load->view('index');
+	}
+
+	public function clear_operator_list()
+	{
+		$this->load->view('user/operator_list');
+	}
+	public function operator_list()
+	{
+		$this->load->view('index');
+	}
 
 }

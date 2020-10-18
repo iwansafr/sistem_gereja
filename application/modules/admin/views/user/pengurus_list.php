@@ -4,7 +4,7 @@ $form = new Zea();
 
 $form->init('roll');
 $form->setTable('user');
-$form->setWhere(' user_role_id = 3');
+$form->setWhere(' user_role_id = 5');
 
 $form->search();
 $form->setNumbering(true);
@@ -21,7 +21,7 @@ $form->setLabel('phone','Nomor HP');
 
 $form->setEdit(true);
 $form->setDelete(true);
-$form->setEditLink('jemaat_edit?id=','id');
+$form->setEditLink('pengurus_edit?id=','id');
 
-$form->setUrl('admin/user/clear_jemaat_list');
+$form->setUrl('admin/user/clear_pengurus_list');
 $form->form();
