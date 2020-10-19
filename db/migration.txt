@@ -1,0 +1,2 @@
+ALTER TABLE `kegiatan` ADD `jam` TIME NOT NULL AFTER `tgl`, ADD `tempat` VARCHAR(255) NOT NULL AFTER `jam`;
+
