@@ -6,7 +6,9 @@ $form->setTable('kelompok');
 
 $form->search();
 $form->setNumbering(true);
-$form->addInput('id','hidden');
+$form->addInput('id','plaintext');
+$form->setLabel('id','Action');
+$form->setPlainText('id',[base_url('admin/kelompok/tambah_member/{id}/tambah_member')=>'Tambah Member']);
 $form->addInput('nama','plaintext');
 $form->setLabel('nama','Nama Kelompok');
 

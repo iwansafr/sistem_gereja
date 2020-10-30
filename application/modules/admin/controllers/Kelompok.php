@@ -13,6 +13,25 @@ class Kelompok extends CI_Controller
 		$this->esg_model->init();
 	}
 
+	public function tambah_member($kelompok_id)
+	{
+		$kelompok_exist = [];
+		$user_ids = [];
+		if(!empty($kelompok_id))
+		{
+			$kelompok_exist = $this->db->get_where('kelompok',['id'=>$kelompok_id])->row_array();
+			$this->db->select('user_id');
+			// $this->db->from('kelompok_user');
+			$this->db->where('kelompok_id',$kelompok_id);
+			$user_ids_tmp = $this->db->get('kelompok_user')->result_array();
+			foreach ($user_ids_tmp as $key => $value) 
+			{
+				$user_ids[] = $value['user_id'];
+			}
+		}
+		$this->load->view('index',['kelompok_exist'=>$kelompok_exist,'user_ids'=>$user_ids]);
+	}
+
 	public function edit()
 	{
 		$last_id = 0;
