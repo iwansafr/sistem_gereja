@@ -7,9 +7,12 @@ $form->setTable('kegiatan');
 
 $form->search();
 
-$form->addInput('id','hidden');
+$form->addInput('id', 'hidden');
 $form->setNumbering(true);
-$form->addInput('nama','plaintext');
+$form->addInput('nama', 'plaintext');
+$form->addInput('kode', 'plaintext');
+$form->addInput('tempat', 'plaintext');
+$form->addInput('tgl', 'plaintext');
 
 $form->setEdit(true);
 $form->setDelete(true);

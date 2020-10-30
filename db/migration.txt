@@ -7,3 +7,19 @@ CREATE TABLE kelompok_user (
 	kelompok_id INT(11) NOT NULL,
 	user_id INT(11) NOT NULL
 )
+
+ALTER TABLE `sistem_gereja`.`kelompok_user` 
+ADD INDEX `fk_kelompok_user_1_idx` (`user_id` ASC) VISIBLE,
+ADD INDEX `fk_kelompok_user_2_idx` (`kelompok_id` ASC) VISIBLE;
+;
+ALTER TABLE `sistem_gereja`.`kelompok_user` 
+ADD CONSTRAINT `fk_kelompok_user_1`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `sistem_gereja`.`user` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_kelompok_user_2`
+  FOREIGN KEY (`kelompok_id`)
+  REFERENCES `sistem_gereja`.`kelompok` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

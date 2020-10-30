@@ -2,6 +2,9 @@
 
 if(!empty($kelompok_exist))
 {
+	?>
+	<a href="" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> Refresh</a>
+	<?php
 	$edit = new zea();
 	$edit->setHeading('Jemaat '.$kelompok_exist['nama']);
 	$edit->init('edit');
