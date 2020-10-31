@@ -21,4 +21,6 @@ $form->setAttribute('user_id','disabled');
 $form->setEdit(true);
 $form->setDelete(true);
 
+$form->setUrl('admin/kelompok/clear_list');
+
 $form->form();
