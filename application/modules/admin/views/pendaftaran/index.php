@@ -13,7 +13,16 @@ if(!empty($user['name']))
 	$form->addInput('kegiatan_id','dropdown');
 	$form->setLabel('kegiatan_id','Pelayanan');
 	$form->removeNone('kegiatan_id');
-	$form->tableOptions('kegiatan_id','kegiatan','id','nama');
+	if(!empty($kegiatan_ids))
+	{
+		$form->tableOptions('kegiatan_id','kegiatan','id','nama',' id NOT IN('.implode(',',$kegiatan_ids).')');
+	}else{
+		$form->tableOptions('kegiatan_id','kegiatan','id','nama');
+	}
+	if(empty($form->options['kegiatan_id']))
+	{
+		$form->setSave(false);
+	}
 	$form->addInput('user_id','static');
 	$form->setValue('user_id',$user['id']);
 

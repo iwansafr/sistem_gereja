@@ -2,6 +2,7 @@
 
 class Pendaftaran extends CI_Controller
 {
+	var $user;
 	public function __construct()
 	{
 		parent::__construct();
@@ -10,12 +11,21 @@ class Pendaftaran extends CI_Controller
 		$this->load->model('admin_model');
 		$this->load->library('esg');
 		$this->load->library('ZEA/zea');
+		$this->user = $this->session->userdata(base_url('_logged_in'));
 		$this->esg_model->init();
 	}
 
 	public function index()
 	{
-		$this->load->view('index');
+		$kegiatan_ids = [];
+		$this->db->select('kegiatan_id');
+		$this->db->where('user_id',$this->user['id']);
+		$kegiatan_id_tmp = $this->db->get('kegiatan_user')->result_array();
+		foreach ($kegiatan_id_tmp as $key => $value) 
+		{
+			$kegiatan_ids[] = $value['kegiatan_id'];
+		}
+		$this->load->view('index',['user'=>$this->user,'kegiatan_ids'=>$kegiatan_ids]);
 	}
 
 	private function type($type = '')
