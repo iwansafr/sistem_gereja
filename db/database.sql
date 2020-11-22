@@ -20,7 +20,7 @@ CREATE TABLE `admin_menu` (
   `sort_order` int NOT NULL DEFAULT '1',
   `created` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `admin_menu` (`id`, `par_id`, `user_role_ids`, `title`, `icon`, `link`, `sort_order`, `created`) VALUES
 (1, 0, ',1,2,3,', 'Dashboard', 'fa fa-tachometer-alt', '/', 1, '2019-03-30 03:05:59'),
@@ -59,9 +59,20 @@ INSERT INTO `admin_menu` (`id`, `par_id`, `user_role_ids`, `title`, `icon`, `lin
 (34, 23, ',1,2,', 'Bank Account', 'fa fa-user', '/bank_account', 85, '2019-04-06 01:37:09'),
 (35, 23, ',1,', 'Dashboard', 'fa fa-chart-bar', '/config/dashboard', 88, '2019-04-19 18:37:39'),
 (37, 21, ',1,', 'Subscribers', 'fa fa-user', '/subscriber', 1, '2019-04-22 06:37:13'),
-(38, 0, ',1,2,4,5,', 'Jemaat', 'fa fa-user', '#', 1, '2020-10-18 06:55:37'),
+(38, 0, ',1,2,4,5,', 'Jemaat', 'fa fa-user', '#', 2, '2020-10-18 06:55:37'),
 (39, 38, ',1,2,4,5,', 'Tambah Jemaat', 'fa fa-plus', '/user/jemaat_edit', 1, '2020-10-18 06:56:18'),
-(40, 38, ',1,2,4,5,', 'Data Jemaat', 'fa fa-list', '/user/jemaat_list', 1, '2020-10-18 06:56:38');
+(40, 38, ',1,2,4,5,', 'Data Jemaat', 'fa fa-list', '/user/jemaat_list', 1, '2020-10-18 06:56:38'),
+(41, 0, ',1,2,4,', 'Pengurus', 'fa fa-user', '#', 2, '2020-10-18 10:05:06'),
+(42, 41, ',1,2,4,', 'Data Pengurus', 'fa fa-list', '/user/pengurus_list', 1, '2020-10-18 10:05:41'),
+(43, 41, ',1,2,4,', 'Tambah Pengurus', 'fa fa-plus', '/user/pengurus_edit', 1, '2020-10-18 10:05:56'),
+(44, 0, ',1,2,', 'Team IT', 'fa fa-laptop', '#', 2, '2020-10-18 10:18:33'),
+(45, 44, ',1,2,', 'Data Admin', 'fa fa-list', '/user/admin_list', 1, '2020-10-18 10:18:57'),
+(46, 44, ',1,2,', 'Tambah Admin', 'fa fa-plus', '/user/admin_edit', 1, '2020-10-18 10:19:09'),
+(47, 44, ',1,2,', 'Data Operator', 'fa fa-list', '/user/operator_list', 1, '2020-10-18 10:19:24'),
+(48, 44, ',1,2,', 'Tambah Operator', 'fa fa-plus', '/user/operator_edit', 1, '2020-10-18 10:19:43'),
+(49, 0, ',1,2,4,5,', 'kegiatan', 'fa fa-calendar', '#', 2, '2020-10-18 17:00:15'),
+(50, 49, ',1,2,4,5,', 'Data Kegiatan', 'fa fa-list', '/kegiatan/list', 1, '2020-10-18 17:00:47'),
+(51, 49, ',1,2,4,5,', 'Tambah Kegiatan', 'fa fa-plus', '/kegiatan/edit', 1, '2020-10-18 17:01:01');
 
 DROP TABLE IF EXISTS `bank_account`;
 CREATE TABLE `bank_account` (
@@ -72,7 +83,7 @@ CREATE TABLE `bank_account` (
   `bank_number` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `bank_account` (`id`, `bank_name`, `person_name`, `icon`, `bank_number`, `created`) VALUES
 (1, 'BCA', 'Iwan Safrudin', 'icon_BCA.png', '0312609779', '2019-04-14 16:18:57'),
@@ -88,7 +99,11 @@ CREATE TABLE `bps` (
   `pengurus_id` int NOT NULL COMMENT 'user id role pengurus',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='baptis , pernikahan, sidi';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='baptis , pernikahan, sidi';
+
+INSERT INTO `bps` (`id`, `tipe`, `kode`, `tgl`, `jemaat_id`, `pengurus_id`, `created`) VALUES
+(1, 1, 'B20201031', '2020-10-31', 3, 5, '2020-10-31 10:14:51'),
+(2, 2, 'N20201031', '2020-10-31', 3, 5, '2020-10-31 10:17:09');
 
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
@@ -98,11 +113,11 @@ CREATE TABLE `comment` (
   `module_id` int NOT NULL,
   `user_id` int NOT NULL DEFAULT '0',
   `username` varchar(255) NOT NULL,
-  `content` text NOT NULL,
+  `content` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=unread, 1=read',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `config`;
 CREATE TABLE `config` (
@@ -187,7 +202,7 @@ CREATE TABLE `content_tag` (
   `title` varchar(255) NOT NULL,
   `total` int NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `invoice`;
 CREATE TABLE `invoice` (
@@ -196,12 +211,12 @@ CREATE TABLE `invoice` (
   `receiver` varchar(255) NOT NULL,
   `payment_method` tinyint(1) NOT NULL DEFAULT '1',
   `notes` varchar(255) NOT NULL,
-  `items` text NOT NULL,
+  `items` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL,
   `ppn` int NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `kegiatan`;
 CREATE TABLE `kegiatan` (
@@ -209,22 +224,43 @@ CREATE TABLE `kegiatan` (
   `kode` varchar(10) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `tgl` date NOT NULL,
+  `jam` time NOT NULL,
+  `tempat` varchar(255) NOT NULL,
   `jml_peserta` int NOT NULL,
   `anggaran` int NOT NULL,
   `proposal` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `kegiatan` (`id`, `kode`, `nama`, `tgl`, `jam`, `tempat`, `jml_peserta`, `anggaran`, `proposal`, `created`) VALUES
+(1, 'KG20201021', 'retreats', '2020-01-01', '01:00:00', 'jepara', 100, 1000000, 'proposal_retreat.pdf', '2020-10-21 17:07:57'),
+(2, 'KG20201102', 'baptis', '2020-01-01', '01:00:00', 'jepara', 200, 80000, 'proposal_baptis.pdf', '2020-11-02 03:19:10');
+
+DROP TABLE IF EXISTS `kegiatan_user`;
+CREATE TABLE `kegiatan_user` (
+  `id` int UNSIGNED NOT NULL,
+  `kegiatan_id` int NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `kelompok`;
 CREATE TABLE `kelompok` (
   `id` int NOT NULL,
+  `kode` varchar(20) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `ketua_kelompok` varchar(255) NOT NULL,
   `user_id` int NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `kelompok_user`;
+CREATE TABLE `kelompok_user` (
+  `id` int UNSIGNED NOT NULL,
+  `kelompok_id` int NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
@@ -256,11 +292,11 @@ CREATE TABLE `message` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `message` text NOT NULL,
+  `message` mediumtext NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1=unread,2=read',
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `subscriber`;
 CREATE TABLE `subscriber` (
@@ -268,7 +304,7 @@ CREATE TABLE `subscriber` (
   `email` varchar(255) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `subscriber` (`id`, `email`, `created`) VALUES
 (1, 'iwansafr@gmail.com', '2019-04-22 06:39:07');
@@ -279,9 +315,30 @@ CREATE TABLE `trash` (
   `user_id` int NOT NULL,
   `table_id` int NOT NULL,
   `table_title` varchar(255) NOT NULL,
-  `table_content` text NOT NULL,
+  `table_content` mediumtext NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `trash` (`id`, `user_id`, `table_id`, `table_title`, `table_content`, `created`) VALUES
+(360, 1, 3, 'kelompok_user', '{\"id\":\"3\",\"kelompok_id\":\"1\",\"user_id\":\"0\"}', '2020-10-30 23:51:19'),
+(361, 1, 4, 'kelompok_user', '{\"id\":\"4\",\"kelompok_id\":\"1\",\"user_id\":\"0\"}', '2020-10-30 23:51:19'),
+(362, 1, 1, 'kelompok', '{\"id\":\"1\",\"kode\":\"KP202010301\",\"nama\":\"bambang\",\"ketua_kelompok\":\"\",\"user_id\":\"5\",\"created\":\"2020-10-30 23:49:49\",\"updated\":\"2020-10-30 23:49:49\"}', '2020-10-30 23:59:04'),
+(363, 3, 2, 'kegiatan_user', '{\"id\":\"2\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:07:03'),
+(364, 3, 3, 'kegiatan_user', '{\"id\":\"3\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:21:15'),
+(365, 3, 4, 'kegiatan_user', '{\"id\":\"4\",\"kegiatan_id\":\"2\",\"user_id\":\"3\"}', '2020-11-02 03:24:39'),
+(366, 3, 5, 'kegiatan_user', '{\"id\":\"5\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:25:33'),
+(367, 3, 6, 'kegiatan_user', '{\"id\":\"6\",\"kegiatan_id\":\"2\",\"user_id\":\"3\"}', '2020-11-02 03:28:05'),
+(368, 3, 7, 'kegiatan_user', '{\"id\":\"7\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:28:48'),
+(369, 3, 8, 'kegiatan_user', '{\"id\":\"8\",\"kegiatan_id\":\"2\",\"user_id\":\"3\"}', '2020-11-02 03:28:48'),
+(370, 3, 9, 'kegiatan_user', '{\"id\":\"9\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:29:49'),
+(371, 3, 10, 'kegiatan_user', '{\"id\":\"10\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:29:49'),
+(372, 3, 11, 'kegiatan_user', '{\"id\":\"11\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:30:51'),
+(373, 3, 12, 'kegiatan_user', '{\"id\":\"12\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:31:51'),
+(374, 3, 13, 'kegiatan_user', '{\"id\":\"13\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:31:51'),
+(375, 3, 14, 'kegiatan_user', '{\"id\":\"14\",\"kegiatan_id\":\"1\",\"user_id\":\"3\"}', '2020-11-02 03:31:51'),
+(376, 1, 53, 'admin_menu', '{\"id\":\"53\",\"par_id\":\"52\",\"user_role_ids\":\",1,2,\",\"title\":\"Data Admin\",\"icon\":\"fa fa-list\",\"link\":\"\\/user\\/admin_list\",\"sort_order\":\"1\",\"created\":\"2020-11-04 19:36:58\",\"updated\":\"2020-11-04 19:36:58\"}', '2020-11-04 19:37:34'),
+(377, 1, 54, 'admin_menu', '{\"id\":\"54\",\"par_id\":\"52\",\"user_role_ids\":\",1,2,\",\"title\":\"Tambah Admin\",\"icon\":\"fa fa-plus\",\"link\":\"\\/user\\/admin_edit\",\"sort_order\":\"1\",\"created\":\"2020-11-04 19:37:14\",\"updated\":\"2020-11-04 19:37:14\"}', '2020-11-04 19:37:34'),
+(378, 1, 52, 'admin_menu', '{\"id\":\"52\",\"par_id\":\"0\",\"user_role_ids\":\",1,2,\",\"title\":\"Admin\",\"icon\":\"fa fa-user\",\"link\":\"#\",\"sort_order\":\"2\",\"created\":\"2020-11-04 19:36:15\",\"updated\":\"2020-11-04 19:36:24\"}', '2020-11-04 19:37:40');
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -305,7 +362,23 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `name`, `address`, `p
 (1, 'root', '$2y$10$45QWDhukYbXFXViCxA70su93e5OsxUdAxFi20whzXxGE2NkM7BMY6', 'root@esoftgreat.com', '', '', '', NULL, 'image_root.jpeg', 1, 0, 1, '2018-11-03 07:36:32'),
 (2, 'admin', '$2y$10$Cl4.5IqxiOiB.osC76GZr.TreZcuenu/YxSScom7nQYgyekBdFD1G', 'pramestha@gmail.com', '', '', '', NULL, 'image_admin.png', 2, 0, 1, '2020-05-15 14:27:40'),
 (3, '202010181', '$2y$10$94RDNn/.rycnyb6t5KvUrOoQlxfO2ZFGqs1/4srYeCLE1ISAuq4vK', '', 'iwan', 'tulakan', '085290335332', '1993-01-16', '', 3, 0, 1, '2020-10-18 14:28:36'),
-(4, '202010182', '$2y$10$94RDNn/.rycnyb6t5KvUrOoQlxfO2ZFGqs1/4srYeCLE1ISAuq4vK', '', 'lina', 'tulakan', '907987897', '2020-01-01', '', 3, 0, 1, '2020-10-18 14:37:42');
+(4, '202010182', '$2y$10$nqSxM4i0b7.tk2CMe2mIZ.9kRBF3.vLIyq0CnbQmXO951Ov3obNFC', '', 'linas', 'tulakan', '907987897', '2020-01-01', '', 3, 0, 1, '2020-10-18 14:37:42'),
+(5, 'zea', '$2y$10$iYWohJBuLeIREvvAKopPyeN9oRgPrstyK/WQW/9tdhOQ8J3GojitK', '', 'zea', 'tulakan', '98798789', '2020-01-01', '', 5, 1, 1, '2020-10-18 17:14:36'),
+(6, 'op1', '$2y$10$9EQxaf/j2fTUCUbDxR5gtOhFyL1wrkp0NFILQwSBJ745td/4aalky', '', 'operator 1', '', '08908', NULL, '', 4, 0, 1, '2020-10-18 17:30:12');
+
+DROP TABLE IF EXISTS `user_jabatan`;
+CREATE TABLE `user_jabatan` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_jabatan` (`id`, `title`, `created`) VALUES
+(1, 'Ketua', '2020-10-18 17:11:01'),
+(2, 'Wakil Ketua', '2020-10-18 17:11:07'),
+(3, 'Sekretaris 1', '2020-10-18 17:11:11'),
+(4, 'Sekretaris 2', '2020-10-18 17:11:31');
 
 DROP TABLE IF EXISTS `user_login`;
 CREATE TABLE `user_login` (
@@ -315,11 +388,27 @@ CREATE TABLE `user_login` (
   `browser` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL COMMENT '0=failed, 1=success',
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_login` (`id`, `user_id`, `ip`, `browser`, `status`, `created`) VALUES
 (1, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-17 14:54:55'),
-(2, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-18 13:28:05');
+(2, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-18 13:28:05'),
+(3, 0, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 0, '2020-10-18 17:01:56'),
+(4, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-18 17:01:59'),
+(5, 0, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 0, '2020-10-18 17:13:58'),
+(6, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-18 17:14:00'),
+(7, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', 1, '2020-10-18 23:56:07'),
+(8, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', 1, '2020-10-21 17:02:38'),
+(9, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-30 19:09:55'),
+(10, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-30 23:48:09'),
+(11, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-31 07:11:06'),
+(12, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-31 10:06:11'),
+(13, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-31 20:21:19'),
+(14, 3, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-10-31 20:22:52'),
+(15, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-11-01 00:56:43'),
+(16, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-11-02 02:11:31'),
+(17, 3, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-11-02 02:31:52'),
+(18, 1, '::1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', 1, '2020-11-04 18:45:29');
 
 DROP TABLE IF EXISTS `user_login_failed`;
 CREATE TABLE `user_login_failed` (
@@ -327,17 +416,21 @@ CREATE TABLE `user_login_failed` (
   `user_login_id` int NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `user_login_failed` (`id`, `user_login_id`, `username`, `password`) VALUES
+(1, 3, 'root', 'Dks_080308'),
+(2, 5, 'root', 'Dks_080308');
 
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `id` int NOT NULL,
   `level` tinyint NOT NULL,
   `title` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `description` mediumtext NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `user_role` (`id`, `level`, `title`, `description`, `created`) VALUES
 (1, 1, 'root', 'super user', '2018-11-02 22:57:22'),
@@ -356,12 +449,48 @@ CREATE TABLE `visitor` (
   `country` varchar(10) NOT NULL,
   `browser` varchar(255) NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `visitor` (`id`, `ip`, `visited`, `city`, `region`, `country`, `browser`, `created`) VALUES
 (1, '::1', 'http://localhost/sistem_gereja/', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', '2020-10-17 14:54:41'),
 (2, '::1', 'http://localhost/sistem_gereja/', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', '2020-10-17 14:55:29'),
-(3, '::1', 'http://localhost/sistem_gereja/', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', '2020-10-17 14:55:45');
+(3, '::1', 'http://localhost/sistem_gereja/', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36', '2020-10-17 14:55:45'),
+(4, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', '2020-10-21 17:09:29'),
+(5, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', '2020-10-21 17:11:50'),
+(6, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', '2020-10-21 17:13:23'),
+(7, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36', '2020-10-21 17:14:04'),
+(8, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:21:37'),
+(9, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:36'),
+(10, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:40'),
+(11, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:45'),
+(12, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:51'),
+(13, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:53'),
+(14, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:24:55'),
+(15, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:01'),
+(16, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:19'),
+(17, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:30'),
+(18, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:34'),
+(19, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:37'),
+(20, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:25:43'),
+(21, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:28:02'),
+(22, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:28:06'),
+(23, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:28:07'),
+(24, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:28:10'),
+(25, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:28:45'),
+(26, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:29:17'),
+(27, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:29:39'),
+(28, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:29:46'),
+(29, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:29:50'),
+(30, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:29:52'),
+(31, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:00'),
+(32, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:45'),
+(33, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:49'),
+(34, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:52'),
+(35, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:56'),
+(36, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:30:59'),
+(37, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:31:06'),
+(38, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:31:43'),
+(39, '::1', 'http://localhost/sistem_gereja/templates/AdminLTE/assets/summernote/summernote.js.map', '', '', '', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36', '2020-11-02 03:31:45');
 
 
 ALTER TABLE `admin_menu`
@@ -395,8 +524,18 @@ ALTER TABLE `invoice`
 ALTER TABLE `kegiatan`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `kegiatan_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_kelompok_user_1_idx` (`user_id`),
+  ADD KEY `fk_kelompok_user_2_idx` (`kegiatan_id`);
+
 ALTER TABLE `kelompok`
   ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `kelompok_user`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_kelompok_user_1_idx` (`user_id`),
+  ADD KEY `fk_kelompok_user_2_idx` (`kelompok_id`);
 
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
@@ -417,6 +556,9 @@ ALTER TABLE `trash`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
+ALTER TABLE `user_jabatan`
+  ADD PRIMARY KEY (`id`);
+
 ALTER TABLE `user_login`
   ADD PRIMARY KEY (`id`);
 
@@ -431,13 +573,13 @@ ALTER TABLE `visitor`
 
 
 ALTER TABLE `admin_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 ALTER TABLE `bank_account`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `bps`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `comment`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
@@ -458,10 +600,16 @@ ALTER TABLE `invoice`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 ALTER TABLE `kegiatan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+ALTER TABLE `kegiatan_user`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 ALTER TABLE `kelompok`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+ALTER TABLE `kelompok_user`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `menu`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
@@ -476,23 +624,30 @@ ALTER TABLE `subscriber`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 ALTER TABLE `trash`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=360;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
 
 ALTER TABLE `user`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+ALTER TABLE `user_jabatan`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 ALTER TABLE `user_login`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 ALTER TABLE `user_login_failed`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 ALTER TABLE `user_role`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 ALTER TABLE `visitor`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
+
+ALTER TABLE `kelompok_user`
+  ADD CONSTRAINT `fk_kelompok_user_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_kelompok_user_2` FOREIGN KEY (`kelompok_id`) REFERENCES `kelompok` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE `trash`
   ADD CONSTRAINT `trash_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
