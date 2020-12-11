@@ -29,5 +29,7 @@ if(is_root())
 ?>
 <div class="row">
 	<h1 style="text-align: center;font-weight: bold;">SISTEM INFORMASI PELAYANAN JEMAAT GITJ PATI BERBASIS WEB</h1>
-	<img src="<?php echo image_module('config',$site['logo']['image']);?>" alt="" class="img img-responsive" style="width: 100%;">
+	<div class="container">
+		<img src="<?php echo image_module('config/logo',$site['logo']['image']);?>" alt="" class="img img-responsive" style="width: 100%;">
+	</div>
 </div>
