@@ -302,6 +302,7 @@ class Admin_model extends CI_Model
 	{
 		$data = array();
 		$data['logo'] = $this->esg->get_config('logo');
+		$data['contact'] = $this->esg->get_config('contact');
 		$data['site'] = $this->esg->get_config('site');
 		$this->esg->set_esg('site', $data);
 

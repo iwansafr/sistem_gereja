@@ -31,5 +31,19 @@ if(is_root())
 	<h1 style="text-align: center;font-weight: bold;">SISTEM INFORMASI PELAYANAN JEMAAT GITJ PATI BERBASIS WEB</h1>
 	<div class="container">
 		<img src="<?php echo image_module('config/logo',$site['logo']['image']);?>" alt="" class="img img-responsive" style="width: 100%;">
+		<div class="panel-body">
+			<h2><?= $site['contact']['name'] ?></h2>
+			<p><?= $site['contact']['description'] ?></p>
+			<table>
+				<tr>
+					<td>email</td>
+					<td>: <?= $site['contact']['email'] ?> </td>
+				</tr>
+				<tr>
+					<td>phone</td>
+					<td>: <?= $site['contact']['phone'] ?> </td>
+				</tr>
+			</table>
+		</div>
 	</div>
 </div>
