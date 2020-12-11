@@ -5,6 +5,7 @@ if(!empty($type_id))
 	$form = new Zea();
 	$form->init('roll');
 	$form->setTable('bps');
+	$form->setHeading('Data');
 
 	$form->search();
 	$form->addInput('id','hidden');

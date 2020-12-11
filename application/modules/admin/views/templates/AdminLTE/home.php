@@ -27,3 +27,6 @@ if(is_root())
 	// pr(ip_detail(ip()));
 }
 ?>
+<div class="row">
+	<h1 style="text-align: center;font-weight: bold;">SISTEM INFORMASI PELAYANAN JEMAAT GITJ PATI BERBASIS WEB</h1>
+</div>

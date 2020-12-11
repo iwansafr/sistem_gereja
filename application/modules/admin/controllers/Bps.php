@@ -47,6 +47,10 @@ class Bps extends CI_Controller
 				$type_id = 3;
 				$kode = 'S';
 				break;
+			case 'katekisasi':
+				$type_id = 4;
+				$kode = 'K';
+				break;
 			default:
 				$type_id = 0;
 				$kode = '';

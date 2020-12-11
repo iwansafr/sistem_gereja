@@ -3,6 +3,7 @@
 if(!empty($type_id))
 {
 	$form = new Zea();
+	$form->setHeading('Data');
 	$form->init('edit');
 	$form->setTable('bps');
 	$id = @intval($_GET['id']);
