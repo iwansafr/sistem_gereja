@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$route['default_controller']               = 'admin';
+$route['default_controller']               = 'home';
 $route['images']                           = 'home/e';
 $route['admin/content']                    = 'admin/content/list';
 $route['admin/user']                       = 'admin/user/list';
