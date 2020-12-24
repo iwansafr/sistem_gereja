@@ -16,3 +16,20 @@
     <?php endforeach ?>
   </ul>
 <?php endif ?>
+<ul class="nav navbar-nav">
+  <li class="dropdown"><a href="<?php echo base_url('/profile.html');?>">Profile</a></li>
+  <li class="dropdown"><a href="<?php echo base_url('/berita.html');?>">Berita</a></li>
+  <li class="dropdown"><a href="<?php echo base_url('/gallery.html');?>">Gallery</a></li>
+  <?php if (role_is('jemaat')): ?>
+      <li class="dropdown"><a href="<?php echo base_url('/warta-jemaat.html');?>">Warta Jemaat</a></li>
+      <li class="dropdown"><a href="<?php echo base_url('/pengumuman.html');?>">Pengumuman</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pendaftaran <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="">Akta Nikah</a></li>
+          <li><a href="">Baptis</a></li>
+        </ul>
+      </li>
+      <li class="dropdown"><a href="">Jadwal</a></li>
+  <?php endif ?>
+</ul>

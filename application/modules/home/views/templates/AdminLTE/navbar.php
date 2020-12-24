@@ -11,13 +11,7 @@
       </button>
     </div>
     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-
       <?php $this->load->view('menu_top') ?>
-      <form class="navbar-form navbar-left" role="search" action="search" method="get">
-        <div class="form-group">
-          <input type="text" class="form-control" id="navbar-search-input" name="keyword" placeholder="Search">
-        </div>
-      </form>
     </div>
     <?php $this->load->view('user_menu') ?>
   </div>
