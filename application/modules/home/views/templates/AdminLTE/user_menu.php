@@ -26,13 +26,13 @@
           <li class="user-body">
             <div class="row">
               <div class="col-xs-4 text-center">
-                <a href="#" class="btn btn-sm btn-default">Program</a>
+                <!-- <a href="#" class="btn btn-sm btn-default">Program</a> -->
               </div>
               <div class="col-xs-4 text-center">
-                <a href="#" class="btn btn-sm btn-default">Tagihan</a>
+                <!-- <a href="#" class="btn btn-sm btn-default">Tagihan</a> -->
               </div>
               <div class="col-xs-4 text-center">
-                <a href="<?php echo base_url('home/member/daftar') ?>" class="btn btn-sm btn-default"><i class="fa fa-user"></i> Biodata</a>
+                <!-- <a href="<?php echo base_url('home/member/daftar') ?>" class="btn btn-sm btn-default"><i class="fa fa-user"></i> Biodata</a> -->
               </div>
             </div>
             <!-- /.row -->
@@ -40,7 +40,7 @@
           <!-- Menu Footer-->
           <li class="user-footer">
             <div class="pull-left">
-              <a href="#" class="btn btn-default btn-flat">Profile</a>
+              <a href="<?php echo base_url('home/member/daftar') ?>" class="btn btn-sm btn-default"><i class="fa fa-user"></i> Biodata</a>
             </div>
             <div class="pull-right">
               <a href="<?php echo base_url('admin/logout') ?>" class="btn btn-default btn-flat">Log out</a>

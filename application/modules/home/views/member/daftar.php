@@ -3,9 +3,14 @@
 $form = new Zea();
 $form->init('edit');
 $form->setTable('user');
-$form->setHeading('Daftar member');
 $form->setEditStatus(false);
-$id = @intval($_GET['id']);
+$id = @intval($_SESSION[base_url().'_logged_in']['id']);
+if(!empty($id))
+{
+	$form->setHeading('Edit biodata');
+}else{
+	$form->setHeading('Daftar member');
+}
 $form->setId($id);
 
 $form->addInput('name','text');
@@ -30,4 +35,5 @@ $form->addInput('user_role_id','static');
 $form->setValue('user_role_id',3);
 
 $form->setRequired('All');
+msg('pastikan anda mencatat username yang tertera untuk digunakan login nanti','warning');
 $form->form();
