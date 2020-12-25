@@ -29,6 +29,8 @@ if(!empty($type_id))
 	$form->setLabel('pengurus_id','Pengurus');
 	$form->setAttribute('pengurus_id','disabled');
 
+	$form->addInput('status','dropdown');
+	$form->setOptions('status',['Belum diterima','Diterima']);
 	$form->setEdit(true);
 	$form->setDelete(true);
 

@@ -9,6 +9,23 @@ class Daftar extends CI_Controller
 		$this->load->model('home_model');
 		$this->load->library('esg');
 		$this->load->library('ZEA/Zea');
+		$this->status();
+	}
+	private function status()
+	{
+		if(!$this->db->field_exists('status','bps'))
+		{
+			$this->load->dbforge();
+			$fields = array(
+        'status' => array(
+                'type' => 'TINYINT',
+                'constraint' => '1',
+                'default' => '0',
+                'after' => 'id'
+        ),
+			);
+			$this->dbforge->add_column('bps',$fields);
+		}
 	}
 	public function index()
 	{
