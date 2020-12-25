@@ -71,15 +71,6 @@ if(is_admin() || is_root())
 			}
 
 			$this->db->select('id,title');
-			$prodcat = $this->db->get_where('product_cat', 'publish = 1')->result_array();
-			$prodcat[] = array('id'=>'latest', 'title'=>'Latest Product');
-			$prodcat[] = array('id'=>'popular', 'title'=>'Most Popular');
-			foreach ($prodcat as $prodcatkey => &$prodcatvalue)
-			{
-				$prodcatvalue['id'] = $prodcatvalue['id'];
-			}
-
-			$this->db->select('id,title');
 			$menu = $this->db->get_where('menu_position')->result_array();
 			foreach ($menu as $menukey => &$menuvalue)
 			{

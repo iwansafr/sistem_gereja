@@ -38,7 +38,7 @@
 	    			<section class="content-header">
 			        <h1>
 			          <?php echo !empty($navigation['array'][1]) ? $navigation['array'][1]:'' ?>
-			          <small><?php echo !empty($navigation['array'][1]) ? $navigation['array'][2]:'' ?></small>
+			          <small><?php echo !empty($navigation['array'][2]) ? $navigation['array'][2]:'' ?></small>
 			        </h1>
 			        <ol class="breadcrumb">
 			          <li><a href="<?php echo base_url('home') ?>"><i class="fa fa-dashboard"></i> Home</a></li>
