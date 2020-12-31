@@ -22,7 +22,7 @@
   <li class="dropdown"><a href="<?php echo base_url('/gallery.html');?>">Gallery</a></li>
   <?php if (role_is('jemaat')): ?>
       <li class="dropdown"><a href="<?php echo base_url('/warta-jemaat.html');?>">Warta Jemaat</a></li>
-      <li class="dropdown"><a href="<?php echo base_url('/pengumuman.html');?>">Pengumuman</a></li>
+      <li class="dropdown"><a href="<?php echo base_url('/category/pengumuman.html');?>">Pengumuman</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pendaftaran <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
