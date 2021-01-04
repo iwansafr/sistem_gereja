@@ -1496,12 +1496,15 @@ class Zea
 												$id      = @intval($_GET['id']);
 												$get = @$_GET;
 												if (!empty($keyword) || !empty($this->where)) {
+													$url_get = str_replace('?', '', $url_get);
 													$url_get .= '?';
 												} else if (!empty($sort_by) || !empty($id)) {
+													$url_get = str_replace('?', '', $url_get);
 													$url_get .= '?';
 												}
 												if (!empty($get)) {
 													$i = 0;
+													$url_get = str_replace('?', '', $url_get);
 													foreach ($get as $key => $value) {
 														if ($key != 'page') {
 															if ($i > 0) {
