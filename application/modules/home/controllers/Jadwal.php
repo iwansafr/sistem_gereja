@@ -18,7 +18,9 @@ class Jadwal extends CI_Controller
 		$data->setTable('jadwal');
 		$data->search();
 		$data->setNumbering(true);
-		$data->addInput('id','hidden');
+		$data->addInput('id','plaintext');
+		$data->setLabel('id','action');
+		$data->setPlainText('id',[base_url('home/jadwal/detail/{id}')=>'Detail']);
 		$data->addInput('pelayan','plaintext');
 		$data->addInput('kelompok_id','dropdown');
 		$data->tableOptions('kelompok_id','kelompok','id','nama');
@@ -30,6 +32,11 @@ class Jadwal extends CI_Controller
 		$this->load->view('index',['data'=>$data,'kelompok'=>assoc($this->db->query('SELECT id,nama FROM kelompok')->result_array(),'id','nama')]);
 	}
 
+	public function detail($id = 0)
+	{
+		$data = $this->db->get_where('jadwal',['id'=>@intval($id)])->row_array();
+		$this->load->view('index',['data'=>$data]);
+	}
 	public function list()
 	{
 		$this->load->view('index');
