@@ -16,6 +16,7 @@ if(empty($id)){
 }
 $form->setAttribute('kode',['readonly'=>'readonly']);
 $form->addInput('user_id','dropdown');
+$form->removeNone('user_id');
 $form->tableOptions('user_id','user','id','name','user_role_id = 3 OR user_role_id = 5');
 $form->setLabel('user_id','Ketua Kelompok');
 

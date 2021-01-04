@@ -13,6 +13,11 @@ class Kelompok extends CI_Controller
 		$this->esg_model->init();
 	}
 
+	public function index()
+	{
+		$this->load->view('index');
+	}
+
 	public function tambah_member($kelompok_id)
 	{
 		$kelompok_exist = [];

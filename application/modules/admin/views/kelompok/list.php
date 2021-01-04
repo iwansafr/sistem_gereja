@@ -4,6 +4,8 @@ $form = new Zea();
 $form->init('roll');
 $form->setTable('kelompok');
 
+$form->setHeading('<a href="'.base_url('admin/kelompok/edit').'" class="btn btn-sm btn-default"><i class="fa fa-plus"></i> Tambah Kelompok</a>');
+
 $form->search();
 $form->setNumbering(true);
 $form->addInput('id','plaintext');

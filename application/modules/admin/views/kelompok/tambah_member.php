@@ -4,6 +4,7 @@ if(!empty($kelompok_exist))
 {
 	?>
 	<a href="" class="btn btn-sm btn-default"><i class="fa fa-refresh"></i> Refresh</a>
+	<a href="<?php echo base_url('admin/kelompok/list');?>" class="btn btn-sm btn-default"><i class="fa fa-users"></i> Data Kelompok</a>
 	<?php
 	$edit = new zea();
 	$edit->setHeading('Jemaat '.$kelompok_exist['nama']);
