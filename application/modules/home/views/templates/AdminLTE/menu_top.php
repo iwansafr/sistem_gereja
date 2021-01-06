@@ -30,6 +30,6 @@
           <li><a href="<?php echo base_url('home/daftar/baptis');?>">Baptis</a></li>
         </ul>
       </li>
-      <li class="dropdown"><a href="/home/jadwal">Jadwal</a></li>
+      <li class="dropdown"><a href="<?php echo base_url('/home/jadwal');?>">Jadwal</a></li>
   <?php endif ?>
 </ul>

@@ -12,10 +12,11 @@ DROP TABLE IF EXISTS `jadwal`;
 CREATE TABLE `jadwal` (
   `id` int NOT NULL,
   `kelompok_id` int NOT NULL,
+  `kegiatan_id` int NOT NULL,
   `tgl` date NOT NULL,
   `jam` time NOT NULL,
   `tempat` varchar(255) NOT NULL,
-  `pelayan` varchar(255) NOT NULL
+  `user_id` int NOT NULL COMMENT 'user with role pengurus'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 

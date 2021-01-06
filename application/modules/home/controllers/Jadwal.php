@@ -21,7 +21,14 @@ class Jadwal extends CI_Controller
 		$data->addInput('id','plaintext');
 		$data->setLabel('id','action');
 		$data->setPlainText('id',[base_url('home/jadwal/detail/{id}')=>'Detail']);
-		$data->addInput('pelayan','plaintext');
+		$data->addInput('user_id','dropdown');
+		$data->tableOptions('user_id','user','id','name','user_role_id = 5');
+		$data->setAttribute('user_id','disabled');
+		$data->setLabel('user_id','pengurus');
+		$data->addInput('kegiatan_id','dropdown');
+		$data->tableOptions('kegiatan_id','kegiatan','id','nama');
+		$data->setAttribute('kegiatan_id','disabled');
+		$data->setLabel('kegiatan_id','kegiatan');
 		$data->addInput('kelompok_id','dropdown');
 		$data->tableOptions('kelompok_id','kelompok','id','nama');
 		$data->setAttribute('kelompok_id','disabled');
