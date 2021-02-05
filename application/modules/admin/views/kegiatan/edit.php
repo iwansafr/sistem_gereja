@@ -44,7 +44,7 @@ if (empty($id)) {
 	$form->setRequired('All');
 }
 $form->setUnique(['kode']);
-if(is_admin() || is_root())
+if(is_admin() || role_is('root'))
 {
 	$form->addInput('acc','checkbox');
 }
