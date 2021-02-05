@@ -15,6 +15,11 @@ $form->addInput('tempat', 'plaintext');
 $form->addInput('tgl_mulai', 'plaintext');
 $form->addInput('tgl_selesai', 'plaintext');
 
+if(is_admin() || is_root())
+{
+	$form->addInput('acc','checkbox');
+}
+
 $form->setEdit(true);
 $form->setDelete(true);
 

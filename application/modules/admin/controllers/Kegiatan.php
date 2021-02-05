@@ -68,6 +68,18 @@ class Kegiatan extends CI_Controller
 			);
 			$this->dbforge->add_column('kegiatan',$fields);
 		}
+		if(!$this->db->field_exists('acc','kegiatan'))
+		{
+			$this->load->dbforge();
+			$fields = array(
+        'acc' => array(
+                'type' => 'tinyint',
+                'after' => 'proposal',
+                'default' => 0,
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
+		}
 		$this->load->view('index');
 	}
 	public function clear_list()
