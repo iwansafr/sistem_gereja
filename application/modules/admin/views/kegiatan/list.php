@@ -15,7 +15,7 @@ $form->addInput('tempat', 'plaintext');
 $form->addInput('tgl_mulai', 'plaintext');
 $form->addInput('tgl_selesai', 'plaintext');
 
-if(is_admin() || is_root())
+if(is_admin() || is_root() || role_is('pengurus'))
 {
 	$form->addInput('acc','checkbox');
 }
