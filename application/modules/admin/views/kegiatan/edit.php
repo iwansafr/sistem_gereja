@@ -18,8 +18,11 @@ if (empty($id)) {
 $form->setUnique(['kode']);
 
 
-$form->addInput('tgl', 'text');
-$form->setType('tgl', 'date');
+$form->addInput('tgl_mulai', 'text');
+$form->setType('tgl_mulai', 'date');
+
+$form->addInput('tgl_selesai', 'text');
+$form->setType('tgl_selesai', 'date');
 
 $form->addInput('jam', 'text');
 $form->setType('jam', 'time');

@@ -12,7 +12,8 @@ $form->setNumbering(true);
 $form->addInput('nama', 'plaintext');
 $form->addInput('kode', 'plaintext');
 $form->addInput('tempat', 'plaintext');
-$form->addInput('tgl', 'plaintext');
+$form->addInput('tgl_mulai', 'plaintext');
+$form->addInput('tgl_selesai', 'plaintext');
 
 $form->setEdit(true);
 $form->setDelete(true);

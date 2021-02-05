@@ -16,6 +16,24 @@ class Kegiatan extends CI_Controller
 	public function edit()
 	{
 		$last_id = 0;
+		if(!$this->db->field_exists('tgl_mulai','kegiatan'))
+		{
+			$this->load->dbforge();
+			$fields = array(
+        'tgl_mulai' => array(
+                'type' => 'DATE',
+                'after' => 'tgl'
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
+			$fields = array(
+        'tgl_selesai' => array(
+                'type' => 'DATE',
+                'after' => 'tgl_mulai'
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
+		}
 		if(empty($_GET['id']))
 		{
 			$last_id = $this->db->query('SELECT kode FROM kegiatan WHERE DATE(created) = CURDATE() ORDER BY id DESC limit 1')->row_array();
@@ -32,6 +50,24 @@ class Kegiatan extends CI_Controller
 
 	public function list()
 	{
+		if(!$this->db->field_exists('tgl_mulai','kegiatan'))
+		{
+			$this->load->dbforge();
+			$fields = array(
+        'tgl_mulai' => array(
+                'type' => 'DATE',
+                'after' => 'tgl'
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
+			$fields = array(
+        'tgl_selesai' => array(
+                'type' => 'DATE',
+                'after' => 'tgl_mulai'
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
+		}
 		$this->load->view('index');
 	}
 	public function clear_list()
