@@ -33,7 +33,13 @@ $form->addInput('password','password');
 $form->setEncrypt(['password']);
 $form->addInput('user_role_id','static');
 $form->setValue('user_role_id',3);
+$form->addInput('active','static');
+$form->setValue('active',0);
 
 $form->setRequired('All');
 msg('pastikan anda mencatat username yang tertera untuk digunakan login nanti','warning');
+if(!empty($_POST))
+{
+	msg('Silahkan tunggu aktivasi dari admin agar anda bisa menggunakan akun anda untuk login','info');
+}
 $form->form();

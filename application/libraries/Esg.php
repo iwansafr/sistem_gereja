@@ -217,7 +217,7 @@ class Esg
 		}else{
 			if(!empty($data))
 			{
-				$user = $this->CI->db->query('SELECT * FROM user WHERE username = ? LIMIT 1',@$data['username'])->row_array();
+				$user = $this->CI->db->query('SELECT * FROM user WHERE username = ? AND active = 1 LIMIT 1 ',@$data['username'])->row_array();
 				if(!empty($user))
 				{
 					if(decrypt($data['password'], $user['password']))

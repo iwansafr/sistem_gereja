@@ -19,6 +19,8 @@ $form->setLabel('name','nama');
 $form->addInput('phone','plaintext');
 $form->setLabel('phone','Nomor HP');
 
+$form->addInput('active','checkbox');
+
 $form->setEdit(true);
 $form->setDelete(true);
 $form->setEditLink('jemaat_edit?id=','id');
