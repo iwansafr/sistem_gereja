@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-if(!empty($type_id) && !empty($has_katekisasi))
+if(!empty($type_id) && !empty($has_katekisasi) || $type_id == 4)
 {
 	$form = new Zea();
 	$form->setHeading('Data');
