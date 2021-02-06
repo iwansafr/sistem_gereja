@@ -33,6 +33,13 @@ class Daftar extends CI_Controller
 		$this->home_model->home();
 		$this->load->view('index');
 	}
+	public function check_katekisasi($tipe = 0)
+	{
+		if(!empty($tipe))
+		{
+			return $this->db->get_where('bps',['tipe'=>$tipe])->row_array();
+		}
+	}
 	public function akta_nikah()
 	{
 		$last_id = $this->db->query('SELECT kode FROM bps WHERE DATE(created) = CURDATE() AND tipe = ? ORDER BY id DESC limit 1',2)->row_array();
@@ -43,7 +50,8 @@ class Daftar extends CI_Controller
 		}else{
 			$last_id = 1;
 		}
-		$this->load->view('index',['last_id'=>$last_id,'type_id'=>2,'kode'=>'N']);
+		$has_katekisasi = $this->check_katekisasi(42);
+		$this->load->view('index',['last_id'=>$last_id,'type_id'=>2,'kode'=>'N','has_katekisasi'=>$has_katekisasi]);
 	}
 	public function baptis()
 	{
@@ -55,7 +63,20 @@ class Daftar extends CI_Controller
 		}else{
 			$last_id = 1;
 		}	
-		$this->load->view('index',['last_id'=>$last_id,'type_id'=>1,'kode'=>'B']);
+		$has_katekisasi = $this->check_katekisasi(41);
+		$this->load->view('index',['last_id'=>$last_id,'type_id'=>1,'kode'=>'B','has_katekisasi'=>$has_katekisasi]);
+	}
+	public function katekisasi()
+	{
+		$last_id = $this->db->query('SELECT kode FROM bps WHERE DATE(created) = CURDATE() AND tipe = ? ORDER BY id DESC limit 1',4)->row_array();
+		if(!empty($last_id)){
+			$last_id = $last_id['kode'];
+			$last_id = substr($last_id,8,9);
+			$last_id = $last_id+1;
+		}else{
+			$last_id = 1;
+		}	
+		$this->load->view('index',['last_id'=>$last_id,'type_id'=>4,'kode'=>'K']);
 	}
 	private function type($type = '')
 	{

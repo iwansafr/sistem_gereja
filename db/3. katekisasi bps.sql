@@ -1,0 +1,1 @@
+ALTER TABLE `bps` CHANGE `tipe` `tipe` TINYINT(2) NOT NULL COMMENT '1=baptis, 2= pernikahan, 3 = sidi, 4 = katekisasi, 41 = katekisasi baptsi, 42 = katekisasi pernikahan';

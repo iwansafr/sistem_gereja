@@ -10,7 +10,16 @@ if(!empty($type_id))
 	$form->search();
 	$form->addInput('id','hidden');
 	$form->setNumbering();
-	$form->setWhere('tipe = '.$type_id);
+	if($type_id = 4)
+	{
+		$form->setWhere('tipe = 41 OR tipe = 42');
+		$form->addInput('tipe','dropdown');
+		$form->setAttribute('tipe','disabled');
+		$form->setOptions('tipe',['41'=>'Baptis','42'=>'Pernikahan']);
+		$form->setLabel('tipe','Katekisasi');
+	}else{
+		$form->setWhere('tipe = '.$type_id);
+	}
 	$form->addInput('tgl','plaintext');
 	$form->setType('tgl','date');
 	$form->setLabel('tgl','Tanggal');

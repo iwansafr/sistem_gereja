@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-if(!empty($type_id))
+if(!empty($type_id) && !empty($has_katekisasi))
 {
 	$form = new Zea();
 	$form->setHeading('Data');
@@ -17,8 +17,17 @@ if(!empty($type_id))
 	$form->setUnique(['kode']);
 	if(empty($id) && !empty($kode)){
 		$form->setValue('kode',$kode.date('Ymd').$last_id);
-		$form->addInput('tipe','static');
-		$form->setValue('tipe',$type_id);
+		if($type_id == 4)
+		{
+			$form->addInput('tipe','dropdown');
+			$form->setLabel('tipe','katekisasi');
+			$form->setOptions('tipe',['41'=>'Baptis', '42'=>'Pernikahan']);
+
+		}else{
+			$form->addInput('tipe','static');
+			$form->setValue('tipe',$type_id);
+		}
+
 	}
 	$form->setAttribute('kode',['readonly'=>'readonly']);
 
@@ -36,5 +45,9 @@ if(!empty($type_id))
 	$form->setRequired('All');
 	$form->form();
 }else{
-	msg('halaman tidak valid','danger');
+	if (empty($has_katekisasi)) {
+		msg('anda belum melakukan katekisasi, silahkan katekisasi terlebih dahulu','danger');
+	}else{
+		msg('halaman tidak valid','danger');
+	}
 }

@@ -84,6 +84,7 @@ class Bps extends CI_Controller
 	}
 	public function clear_list($type = '')
 	{
-		$this->load->view('admin/bps/list');
+		$data_type = $this->type($type);
+		$this->load->view('admin/bps/list',['type_id'=>$data_type['type_id'],'kode'=>$data_type['kode'],'type'=>$type]);
 	}
 }

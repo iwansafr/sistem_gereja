@@ -13,7 +13,13 @@ class Akta extends CI_Controller
 	public function index()
 	{
 		$user = $this->session->userdata(base_url('_logged_in'));
-		$data = $this->db->get_where('akta',['user_id'=>$user['id']])->result_array();
-		$this->load->view('index',['data'=>$data,'user_id'=>$user['id']]);
+		$user_id = 0;
+		$data = [];
+		if(!empty($user['id']))
+		{
+			$data = $this->db->get_where('akta',['user_id'=>$user['id']])->result_array();
+			$user_id = $user['id'];
+		}
+		$this->load->view('index',['data'=>$data,'user_id'=>$user_id]);
 	}
 }
