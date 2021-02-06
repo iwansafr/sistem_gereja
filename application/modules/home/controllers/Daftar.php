@@ -40,7 +40,7 @@ class Daftar extends CI_Controller
 			return $this->db->get_where('bps',['tipe'=>$tipe])->row_array();
 		}
 	}
-	public function akta_nikah()
+	public function nikah()
 	{
 		$last_id = $this->db->query('SELECT kode FROM bps WHERE DATE(created) = CURDATE() AND tipe = ? ORDER BY id DESC limit 1',2)->row_array();
 		if(!empty($last_id)){

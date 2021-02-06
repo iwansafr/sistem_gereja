@@ -26,10 +26,12 @@
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pendaftaran <span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
-          <li><a href="<?php echo base_url('/home/daftar/akta_nikah');?>">Akta Nikah</a></li>
+          <li><a href="<?php echo base_url('/home/daftar/katekisasi');?>">Katekisasi</a></li>
+          <li><a href="<?php echo base_url('/home/daftar/nikah');?>">Nikah</a></li>
           <li><a href="<?php echo base_url('home/daftar/baptis');?>">Baptis</a></li>
         </ul>
       </li>
       <li class="dropdown"><a href="<?php echo base_url('/home/jadwal');?>">Jadwal</a></li>
+      <li class="dropdown"><a href="<?php echo base_url('/home/akta');?>">Akta</a></li>
   <?php endif ?>
 </ul>
