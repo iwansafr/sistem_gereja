@@ -1,0 +1,1 @@
+ALTER TABLE `jadwal` CHANGE `tipe` `tipe` TINYINT(1) NOT NULL DEFAULT '1' COMMENT '1=ibadah,2=umum';
