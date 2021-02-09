@@ -31,7 +31,13 @@
           <li><a href="<?php echo base_url('home/daftar/baptis');?>">Baptis</a></li>
         </ul>
       </li>
-      <li class="dropdown"><a href="<?php echo base_url('/home/jadwal');?>">Jadwal</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Jadwal <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="<?php echo base_url('/home/jadwal/Ibadah');?>">Ibadah</a></li>
+          <li><a href="<?php echo base_url('home/jadwal/Umum');?>">Umum</a></li>
+        </ul>
+      </li>
       <li class="dropdown"><a href="<?php echo base_url('/home/akta');?>">Akta</a></li>
   <?php endif ?>
 </ul>
