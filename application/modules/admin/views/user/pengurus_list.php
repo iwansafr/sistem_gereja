@@ -14,6 +14,7 @@ $form->addInput('username','plaintext');
 $form->setLabel('username','kode');
 $form->addInput('jabatan','dropdown');
 $form->tableOptions('jabatan','user_jabatan','id','title');
+$form->setAttribute('jabatan','disabled');
 
 $form->addInput('name','plaintext');
 $form->setLabel('name','nama');
