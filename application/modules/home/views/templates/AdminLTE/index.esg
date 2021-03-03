@@ -6,14 +6,9 @@
 </div>	
 <div class="row">
 	<div class="col-md-3">
-		<div class="col-md-12">
-			popular lpk
-		</div>
-		<div class="col-md-12">
-			popular program
-		</div>
+		menu side
 	</div>
 	<div class="col-md-9">
-		content
+		{content}
 	</div>
 </div>
