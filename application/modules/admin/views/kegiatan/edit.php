@@ -48,5 +48,11 @@ if(is_admin() || role_is('root') || role_is('pengurus') || role_is('pimpinan'))
 {
 	$form->addInput('acc','checkbox');
 	$form->addInput('rekomendasi','textarea');
+}else{
+	if(!empty($id))
+	{
+		$form->addInput('rekomendasi','plaintext');
+	}
 }
+
 $form->form();
