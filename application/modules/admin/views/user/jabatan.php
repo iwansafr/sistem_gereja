@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-if(is_root())
+if(is_root() || is_admin())
 {
 	$this->zea->init('edit');
 	$id = @intval($_GET['id']);
