@@ -36,6 +36,7 @@ class Kegiatan extends CI_Controller
 		}
 		if(!$this->db->field_exists('rekomendasi','kegiatan'))
 		{
+			$this->load->dbforge();
 			$fields = array(
 	      'rekomendasi' => array(
 	              'type' => 'TEXT',
