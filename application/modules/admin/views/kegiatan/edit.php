@@ -44,7 +44,7 @@ if (empty($id)) {
 	$form->setRequired('All');
 }
 $form->setUnique(['kode']);
-if(is_admin() || role_is('root') || role_is('pengurus'))
+if(is_admin() || role_is('root') || role_is('pengurus') || role_is('pimpinan'))
 {
 	$form->addInput('acc','checkbox');
 	$form->addInput('rekomendasi','textarea');
