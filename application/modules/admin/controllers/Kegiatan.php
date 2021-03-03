@@ -33,6 +33,13 @@ class Kegiatan extends CI_Controller
         ),
 			);
 			$this->dbforge->add_column('kegiatan',$fields);
+			$fields = array(
+        'rekomendasi' => array(
+                'type' => 'TEXT',
+                'after' => 'acc'
+        ),
+			);
+			$this->dbforge->add_column('kegiatan',$fields);
 		}
 		if(empty($_GET['id']))
 		{

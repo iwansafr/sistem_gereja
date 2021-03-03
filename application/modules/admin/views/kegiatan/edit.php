@@ -47,5 +47,6 @@ $form->setUnique(['kode']);
 if(is_admin() || role_is('root') || role_is('pengurus'))
 {
 	$form->addInput('acc','checkbox');
+	$form->addInput('rekomendasi','textarea');
 }
 $form->form();
